@@ -37,6 +37,7 @@ var enemies_container: Node2D
 
 var world_size_x: int = 50
 var world_size_y: int = 40
+var tile_size: Vector2i = Vector2i(64, 32)
 
 func _ready():
 	_create_tileset()
@@ -47,7 +48,7 @@ func _ready():
 
 func _create_tileset():
 	var ts = TileSet.new()
-	ts.tile_size = Vector2i(64, 32)
+	ts.tile_size = tile_size
 	
 	var colors = {
 		TileType.SAND: Color(0.76, 0.65, 0.42),
@@ -107,14 +108,14 @@ func _generate_world_map():
 	_place_resource_zones()
 	_place_initial_buildings()
 
-func _get_tile_type(x: int, y: int) -> TileType:
+func _get_tile_type(_x: int, _y: int) -> TileType:
 	return TileType.SAND
 
 func _place_gravel_zones():
 	var num_zones = randi_range(2, 4)
 	for i in range(num_zones):
-		var cx = randi_range(-world_size_x / 3.0, world_size_x / 3.0)
-		var cy = randi_range(-world_size_y / 3.0, world_size_y / 3.0)
+		var cx = randi_range(-world_size_x / 3 + 1, world_size_x / 3 - 1)
+		var cy = randi_range(-world_size_y / 3 + 1, world_size_y / 3 - 1)
 		var width = randi_range(10, 15)
 		var height = randi_range(10, 15)
 		
@@ -129,8 +130,8 @@ func _place_gravel_zones():
 func _place_resource_zones():
 	var num_zones = randi_range(3, 6)
 	for i in range(num_zones):
-		var cx = randi_range(-world_size_x / 3.0, world_size_x / 3.0)
-		var cy = randi_range(-world_size_y / 3.0, world_size_y / 3.0)
+		var cx = randi_range(-world_size_x / 3 + 1, world_size_x / 3 - 1)
+		var cy = randi_range(-world_size_y / 3 + 1, world_size_y / 3 - 1)
 		var width = randi_range(10, 15)
 		var height = randi_range(10, 15)
 		var resource_type = [TileType.SPICE, TileType.WATER, TileType.STONE].pick_random()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dune_world"]
+[gd_scene load_steps=10 format=4 uid="uid://dune_world"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_world"]
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="2_player"]
@@ -8,19 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://dune_combat" path="res://scenes/combat.tscn" id="7_combat"]
 [ext_resource type="PackedScene" uid="uid://dune_map" path="res://scenes/map.tscn" id="8_map"]
 [ext_resource type="PackedScene" uid="uid://dune_quests" path="res://scenes/quests.tscn" id="9_quests"]
+[ext_resource type="Script" path="res://scripts/minimap.gd" id="10_minimap"]
 
 [sub_resource type="RectangleShape2D" id="PlayerShape"]
 size = Vector2(24, 24)
+
+[sub_resource type="TileSet" id="MinimapTiles"]
 
 [node name="World" type="Node2D" groups=["world"]]
 script = ExtResource("1_world")
 
 [node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("MinimapTiles")
 format = 2
+tile_projection = 1
 layer_0/tile_data = PackedInt32Array()
 
 [node name="FogTileMap" type="TileMap" parent="."]
 format = 2
+tile_projection = 1
 layer_0/tile_data = PackedInt32Array()
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -62,3 +68,28 @@ color = Color(0.878431, 0.690196, 0.360784, 1)
 [node name="Map" parent="." instance=ExtResource("8_map")]
 
 [node name="Quests" parent="." instance=ExtResource("9_quests")]
+
+[node name="MinimapPanel" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -185.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Minimap" type="TileMap" parent="MinimapPanel"]
+offset_right = 175.0
+offset_bottom = 175.0
+
+[node name="PlayerDot" type="ColorRect" parent="MinimapPanel"]
+custom_minimum_size = Vector2(4, 4)
+offset_left = 85.0
+offset_top = 85.0
+offset_right = 89.0
+offset_bottom = 89.0
+color = Color(1, 1, 0, 1)

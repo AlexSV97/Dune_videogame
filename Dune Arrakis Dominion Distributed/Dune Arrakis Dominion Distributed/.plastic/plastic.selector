@@ -1,4 +1,0 @@
-repository "Dune Arrakis Dominion Distributed/Dune Arrakis Dominion Distributed@6872832877485@cloud"
-  path "/"
-    br "/main"
-    co "/main"

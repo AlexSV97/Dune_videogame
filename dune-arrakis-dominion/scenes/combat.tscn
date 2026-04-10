@@ -1,0 +1,117 @@
+[gd_scene load_steps=2 format=4 uid="uid://dune_combat"]
+
+[ext_resource type="Script" path="res://scripts/combat_ui.gd" id="1_combat_ui"]
+
+[node name="Combat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_combat_ui")
+visible = false
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0784314, 0.0588235, 0.0352941, 0.9)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EnemyPanel" type="Panel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 120)
+
+[node name="EnemyName" type="Label" parent="CenterContainer/VBoxContainer/EnemyPanel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 380.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.878431, 0.690196, 0.360784, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="CenterContainer/VBoxContainer/EnemyPanel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 380.0
+offset_bottom = 75.0
+
+[node name="EnemyHealthLabel" type="Label" parent="CenterContainer/VBoxContainer/EnemyPanel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 75.0
+offset_right = 380.0
+offset_bottom = 100.0
+
+[node name="PlayerPanel" type="Panel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 180)
+
+[node name="PlayerName" type="Label" parent="CenterContainer/VBoxContainer/PlayerPanel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 380.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.878431, 0.690196, 0.360784, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CenterContainer/VBoxContainer/PlayerPanel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 180.0
+offset_bottom = 75.0
+
+[node name="PlayerHealthLabel" type="Label" parent="CenterContainer/VBoxContainer/PlayerPanel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 75.0
+offset_right = 180.0
+offset_bottom = 100.0
+
+[node name="PlayerEnergyBar" type="ProgressBar" parent="CenterContainer/VBoxContainer/PlayerPanel"]
+layout_mode = 1
+offset_left = 220.0
+offset_top = 50.0
+offset_right = 380.0
+offset_bottom = 75.0
+
+[node name="PlayerEnergyLabel" type="Label" parent="CenterContainer/VBoxContainer/PlayerPanel"]
+layout_mode = 1
+offset_left = 220.0
+offset_top = 75.0
+offset_right = 380.0
+offset_bottom = 100.0
+
+[node name="ActionsPanel" type="Panel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+
+[node name="ActionsGrid" type="GridContainer" parent="CenterContainer/VBoxContainer/ActionsPanel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 380.0
+offset_bottom = 90.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="LogLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "Combat started..."
+horizontal_alignment = 1

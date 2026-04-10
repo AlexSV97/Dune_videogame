@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://sardaukar_enemy"]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+id = "sardaukar"
+name = "Sardaukar Warrior"
+description = "Elite soldiers from the Emperor's planet. Ruthless and highly trained."
+health = 80
+energy = 40
+attack = 15
+defense = 10
+speed = 8
+experience_reward = 25
+spice_reward = 15
+sprite = null
+enemy_type = 1

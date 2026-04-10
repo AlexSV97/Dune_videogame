@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://crysknife_item"]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1_item_data"]
+
+[resource]
+script = ExtResource("1_item_data")
+id = "crysknife"
+name = "Crysknife"
+description = "The sacred weapon of the Fremen. Made from the tooth of a dead sandworm."
+icon = null
+category = 1
+stack_size = 1
+value = 500

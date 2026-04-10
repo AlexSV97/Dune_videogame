@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LocationData" load_steps=2 format=3 uid="uid://deep_desert_location"]
+
+[ext_resource type="Script" path="res://scripts/resources/location_data.gd" id="1_location_data"]
+
+[resource]
+script = ExtResource("1_location_data")
+id = "deep_desert"
+name = "Deep Desert"
+description = "The most dangerous region of Arrakis. Only the most experienced can survive here. Sandworms roam freely."
+scene_path = "res://scenes/locations/deep_desert.tscn"
+is_unlocked = false
+required_level = 5
+available_quests = ["deep_desert_1"]
+enemies = []
+items = []
+is_dangerous = true
+location_type = 3

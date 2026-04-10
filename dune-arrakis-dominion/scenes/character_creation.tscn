@@ -1,0 +1,185 @@
+[gd_scene load_steps=2 format=4 uid="uid://dune_character_creation"]
+
+[ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_char_creation"]
+
+[node name="CharacterCreation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_char_creation")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0784314, 0.0588235, 0.0352941, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.878431, 0.690196, 0.360784, 1)
+theme_override_font_sizes/font_size = 24
+text = "CREATE YOUR CHARACTER"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.878431, 0.690196, 0.360784, 1)
+text = "Name:"
+
+[node name="NameInput" type="LineEdit" parent="Panel"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 115.0
+offset_right = 270.0
+offset_bottom = 145.0
+placeholder_text = "Enter your name..."
+
+[node name="HouseLabel" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 170.0
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(0.878431, 0.690196, 0.360784, 1)
+text = "Select Your House:"
+
+[node name="AtreidesButton" type="Button" parent="Panel"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 205.0
+offset_right = 270.0
+offset_bottom = 245.0
+text = "🏛️ House Atreides"
+
+[node name="HarkonenButton" type="Button" parent="Panel"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 255.0
+offset_right = 270.0
+offset_bottom = 295.0
+text = "🔥 House Harkonen"
+
+[node name="FremenButton" type="Button" parent="Panel"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 305.0
+offset_right = 270.0
+offset_bottom = 345.0
+text = "🦂 Fremen"
+
+[node name="DescriptionLabel" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 310.0
+offset_top = 80.0
+offset_right = 570.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "Select a house to see details"
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -50.0
+offset_right = -30.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "START GAME"
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -50.0
+offset_right = 110.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "BACK"
+
+[node name="ErrorLabel" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+offset_left = 30.0
+offset_top = 360.0
+offset_right = 570.0
+offset_bottom = 385.0
+theme_override_colors/font_color = Color(0.9, 0.2, 0.2, 1)
+text = "Error message"
+horizontal_alignment = 1
+
+[node name="LoadingPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadingLabel" type="Label" parent="LoadingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.878431, 0.690196, 0.360784, 1)
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="LoadingBar" type="ProgressBar" parent="LoadingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -10.0
+offset_right = 150.0
+offset_bottom = 10.0
+grow_horizontal = 2
+value = 50.0

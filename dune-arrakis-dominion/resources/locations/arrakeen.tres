@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LocationData" load_steps=2 format=3 uid="uid://arrakeen_location"]
+
+[ext_resource type="Script" path="res://scripts/resources/location_data.gd" id="1_location_data"]
+
+[resource]
+script = ExtResource("1_location_data")
+id = "arrakeen"
+name = "Arrakeen"
+description = "The capital city of Arrakis. Seat of power where the Great Houses compete for influence."
+scene_path = "res://scenes/locations/arrakeen.tscn"
+is_unlocked = false
+required_level = 2
+available_quests = ["arrakeen_1", "arrakeen_2"]
+enemies = []
+items = []
+is_dangerous = true
+location_type = 1

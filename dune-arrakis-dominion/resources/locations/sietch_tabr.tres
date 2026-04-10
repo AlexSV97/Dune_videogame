@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LocationData" load_steps=2 format=3 uid="uid://sietch_location"]
+
+[ext_resource type="Script" path="res://scripts/resources/location_data.gd" id="1_location_data"]
+
+[resource]
+script = ExtResource("1_location_data")
+id = "sietch_01"
+name = "Sietch Tabr"
+description = "The home of the Fremen. A hidden cavern complex deep in the desert, protected by sophisticated technology."
+scene_path = "res://scenes/locations/sietch_tabr.tscn"
+is_unlocked = false
+required_level = 3
+available_quests = ["fremen_1", "fremen_2"]
+enemies = []
+items = []
+is_dangerous = false
+location_type = 2

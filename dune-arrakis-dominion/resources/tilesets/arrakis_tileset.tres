@@ -1,0 +1,71 @@
+[gd_resource type="TileSet" format=3 uid="uid://arrakis_tileset"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sand"]
+texture = SubResource("SandTexture")
+
+[sub_resource type="CanvasTexture" id="SandTexture"]
+
+[resource]
+0/name = "Sand"
+0/occlusion_layer_0/light_color = Color(0, 0, 0, 1)
+0/occlusion_layer_0/light_energy = 1.0
+0/occlusion_layer_0/shadow_color = Color(0, 0, 0, 0.5)
+0/occlusion_layer_0/shadow_blur = 1.0
+0/occlusion_layer_0/shadow_slope_scale = 0.0
+0/occlusion_layer_0/shadow_strength = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rock"]
+texture = SubResource("RockTexture")
+
+[sub_resource type="CanvasTexture" id="RockTexture"]
+
+[resource]
+1/name = "Rock"
+1/occlusion_layer_0/light_color = Color(0, 0, 0, 1)
+1/occlusion_layer_0/light_energy = 1.0
+1/occlusion_layer_0/shadow_color = Color(0, 0, 0, 0.5)
+1/occlusion_layer_0/shadow_blur = 1.0
+1/occlusion_layer_0/shadow_slope_scale = 0.0
+1/occlusion_layer_0/shadow_strength = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spice"]
+texture = SubResource("SpiceTexture")
+
+[sub_resource type="CanvasTexture" id="SpiceTexture"]
+
+[resource]
+2/name = "Spice"
+2/occlusion_layer_0/light_color = Color(0, 0, 0, 1)
+2/occlusion_layer_0/light_energy = 1.0
+2/occlusion_layer_0/shadow_color = Color(0, 0, 0, 0.5)
+2/occlusion_layer_0/shadow_blur = 1.0
+2/occlusion_layer_0/shadow_slope_scale = 0.0
+2/occlusion_layer_0/shadow_strength = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_building"]
+texture = SubResource("BuildingTexture")
+
+[sub_resource type="CanvasTexture" id="BuildingTexture"]
+
+[resource]
+3/name = "Building"
+3/occlusion_layer_0/light_color = Color(0, 0, 0, 1)
+3/occlusion_layer_0/light_energy = 1.0
+3/occlusion_layer_0/shadow_color = Color(0, 0, 0, 0.5)
+3/occlusion_layer_0/shadow_blur = 1.0
+3/occlusion_layer_0/shadow_slope_scale = 0.0
+3/occlusion_layer_0/shadow_strength = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_water"]
+texture = SubResource("WaterTexture")
+
+[sub_resource type="CanvasTexture" id="WaterTexture"]
+
+[resource]
+4/name = "Water"
+4/occlusion_layer_0/light_color = Color(0, 0, 0, 1)
+4/occlusion_layer_0/light_energy = 1.0
+4/occlusion_layer_0/shadow_color = Color(0, 0, 0, 0.5)
+4/occlusion_layer_0/shadow_blur = 1.0
+4/occlusion_layer_0/shadow_slope_scale = 0.0
+4/occlusion_layer_0/shadow_strength = 1.0

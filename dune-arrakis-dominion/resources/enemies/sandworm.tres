@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://sandworm_enemy"]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+id = "sandworm"
+name = "Juvenile Sandworm"
+description = "A massive creature from the deep desert. Its presence causes earthquakes."
+health = 150
+energy = 30
+attack = 25
+defense = 8
+speed = 3
+experience_reward = 50
+spice_reward = 30
+sprite = null
+enemy_type = 0

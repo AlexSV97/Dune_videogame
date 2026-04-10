@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LocationData" load_steps=2 format=3 uid="uid://caladan_location"]
+
+[ext_resource type="Script" path="res://scripts/resources/location_data.gd" id="1_location_data"]
+
+[resource]
+script = ExtResource("1_location_data")
+id = "caladan"
+name = "Caladan - House Atreides"
+description = "The ancestral home of House Atreides. A planet of oceans and forests, far from the desert sands."
+scene_path = "res://scenes/locations/caladan.tscn"
+is_unlocked = true
+required_level = 1
+available_quests = ["tutorial_1"]
+enemies = []
+items = []
+is_dangerous = false
+location_type = 0

@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dune: Arrakis Dominion - Domina el Desierto</title>
+    <title>Arrakis te espera</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #d4a853;
-            --gold-light: #e8c97a;
-            --gold-dark: #a8863d;
-            --sand: #c9a66b;
-            --sand-light: #e8d4b8;
-            --blue-atreides: #1a4a6e;
-            --blue-atreides-light: #2a6a9e;
-            --red-harkonnen: #8b2c2c;
-            --red-harkonnen-dark: #5c1c1c;
-            --dark: #0a0a0a;
-            --dark-secondary: #141414;
-            --dark-tertiary: #1e1e1e;
-            --text-light: #f5f5f5;
-            --text-muted: #a0a0a0;
+            --gold: #c9a55a;
+            --gold-dim: #8a6f35;
+            --sand: #b8956e;
+            --dark: #080808;
+            --dark-overlay: rgba(8, 8, 8, 0.85);
+            --text: #e8e0d0;
+            --text-muted: #8a8578;
         }
 
         * {
@@ -31,873 +24,220 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Barlow', sans-serif;
-            background-color: var(--dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0) 100%);
-            padding: 20px 0;
-            transition: background 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(10,10,10,0.98);
-            backdrop-filter: blur(10px);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+        html, body {
+            height: 100%;
             overflow: hidden;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--dark);
-            position: relative;
-            z-index: 1;
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--dark);
+            color: var(--text);
         }
 
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 168, 83, 0.4);
-        }
-
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-        }
-
-        .btn-secondary:hover {
-            background: var(--gold);
-            color: var(--dark);
-        }
-
-        /* Hero Section */
-        .hero {
+        .landing {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
             background: 
-                linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.8) 50%, var(--dark) 100%),
+                linear-gradient(180deg, 
+                    rgba(8, 8, 8, 0.7) 0%, 
+                    rgba(8, 8, 8, 0.5) 50%,
+                    rgba(8, 8, 8, 0.9) 100%),
                 url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1920&q=80') center/cover no-repeat;
-            background-attachment: fixed;
         }
 
-        .hero::before {
+        .landing::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, var(--dark) 70%);
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 50% 80%, rgba(201, 165, 110, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 20%, rgba(139, 107, 61, 0.05) 0%, transparent 40%);
+            pointer-events: none;
         }
 
-        .hero-content {
+        .sand-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .content {
             position: relative;
             z-index: 1;
             text-align: center;
-            max-width: 900px;
+            padding: 20px;
         }
 
-        .hero-content h1 {
-            font-size: 5rem;
-            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            text-shadow: 0 0 60px rgba(212, 168, 83, 0.5);
-            animation: fadeInUp 1s ease, pulse-glow 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(212, 168, 83, 0.4));
+        .symbol {
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.6;
+            margin-bottom: 30px;
+            animation: pulse 4s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(201, 165, 110, 0.3);
         }
 
-        .hero .tagline {
-            font-size: 1.5rem;
-            color: var(--sand-light);
-            margin-bottom: 40px;
-            font-weight: 300;
-            animation: fadeInUp 1s ease 0.2s both;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
         }
 
-        .hero-buttons {
+        .message {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+        }
+
+        .countdown {
             display: flex;
-            gap: 20px;
+            align-items: center;
             justify-content: center;
-            animation: fadeInUp 1s ease 0.4s both;
+            gap: 20px;
         }
 
-        .hero .btn {
-            padding: 18px 50px;
+        .countdown-number {
+            font-family: 'Cinzel', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            position: relative;
+            text-shadow: 0 0 60px rgba(201, 165, 110, 0.5);
+            min-width: 120px;
         }
 
-        .scroll-indicator {
+        .countdown-number::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .countdown-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+
+        .skip {
             position: absolute;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            animation: bounce 2s infinite;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            letter-spacing: 0.1em;
         }
 
-        .scroll-indicator span {
-            display: block;
-            width: 30px;
-            height: 50px;
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            position: relative;
+        .skip:hover {
+            opacity: 1;
+            color: var(--gold);
         }
 
-        .scroll-indicator span::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--gold);
-            border-radius: 50%;
-            animation: scrollDot 2s infinite;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(212, 168, 83, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(212, 168, 83, 0.6); }
-        }
-
-        @keyframes sand-particles {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        @keyframes scrollDot {
-            0%, 100% { top: 10px; opacity: 1; }
-            50% { top: 30px; opacity: 0.5; }
-        }
-
-        /* Sand Particles Effect */
         .particles {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             overflow: hidden;
             pointer-events: none;
-            z-index: 0;
         }
 
         .particle {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: sand-drift 15s infinite linear;
-        }
-
-        @keyframes sand-drift {
-            0% {
-                transform: translateX(-100%) translateY(100vh);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateX(100vw) translateY(-100vh);
-                opacity: 0;
-            }
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 14s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 11s; }
-        .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 13s; }
-        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 15s; }
-        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 12s; }
-        .particle:nth-child(7) { left: 70%; animation-delay: 2s; animation-duration: 14s; }
-        .particle:nth-child(8) { left: 80%; animation-delay: 4s; animation-duration: 11s; }
-        .particle:nth-child(9) { left: 90%; animation-delay: 1s; animation-duration: 13s; }
-        .particle:nth-child(10) { left: 15%; animation-delay: 3s; animation-duration: 16s; }
-        .particle:nth-child(11) { left: 35%; animation-delay: 6s; animation-duration: 12s; }
-        .particle:nth-child(12) { left: 55%; animation-delay: 7s; animation-duration: 14s; }
-
-        /* About Section */
-        .about {
-            padding: 120px 0;
-            background: var(--dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(212, 168, 83, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(26, 74, 110, 0.05) 0%, transparent 50%);
-            animation: pulse-bg 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse-bg {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-card {
-            background: var(--dark-secondary);
-            border: 1px solid rgba(212, 168, 83, 0.1);
-            padding: 40px;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(212, 168, 83, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .about-card:hover::before {
-            opacity: 1;
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(212, 168, 83, 0.15);
-        }
-
-        .about-card .icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: inline-block;
-            padding: 20px;
-            border-radius: 50%;
-            background: rgba(212, 168, 83, 0.1);
-            border: 2px solid var(--gold);
-        }
-
-        .about-card h3 {
-            font-size: 1.3rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-        .about-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Factions Section */
-        .factions {
-            padding: 120px 0;
-            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-secondary) 100%);
-        }
-
-        .factions-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .faction-card {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-            cursor: pointer;
-            group: hover;
-        }
-
-        .faction-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 30%, var(--dark) 100%);
-            z-index: 1;
-        }
-
-        .faction-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.5s ease;
-        }
-
-        .faction-card:hover .faction-bg {
-            transform: scale(1.1);
-        }
-
-        .faction-atreides .faction-bg {
-            background: linear-gradient(135deg, rgba(26, 74, 110, 0.8) 0%, rgba(42, 106, 158, 0.6) 100%),
-                        url('https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=800&q=80') center/cover;
-        }
-
-        .faction-harkonnen .faction-bg {
-            background: linear-gradient(135deg, rgba(92, 28, 28, 0.9) 0%, rgba(139, 44, 44, 0.6) 100%),
-                        url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80') center/cover;
-            filter: hue-rotate(-30deg) saturate(1.5);
-        }
-
-        .faction-disputa .faction-bg {
-            background: linear-gradient(135deg, rgba(139, 107, 61, 0.8) 0%, rgba(201, 166, 107, 0.6) 100%),
-                        url('https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?w=800&q=80') center/cover;
-        }
-
-        .faction-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 30px;
-            z-index: 2;
-        }
-
-        .faction-content h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .faction-atreides .faction-content h3 {
-            color: var(--blue-atreides-light);
-        }
-
-        .faction-harkonnen .faction-content h3 {
-            color: #ff6b6b;
-        }
-
-        .faction-disputa .faction-content h3 {
-            color: var(--gold-light);
-        }
-
-        .faction-content .leader {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .faction-content p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-
-        .faction-card:hover .faction-content p {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 120px 0;
-            background: var(--dark);
-            position: relative;
-        }
-
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1920&q=20') center/cover;
-            opacity: 0.05;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            padding: 30px;
-            background: var(--dark-secondary);
-            border-left: 3px solid var(--gold);
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: var(--dark-tertiary);
-            transform: translateX(10px);
-        }
-
-        .feature-number {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            opacity: 0.3;
-            line-height: 1;
-        }
-
-        .feature-content h3 {
-            font-size: 1.3rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .feature-content p {
-            color: var(--text-muted);
-        }
-
-/* CTA Section */
-        .cta {
-            padding: 120px 0;
-            background: 
-                linear-gradient(180deg, var(--dark) 0%, rgba(212, 168, 83, 0.15) 50%, var(--dark) 100%),
-                url('https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=1920&q=80') center/cover;
-            background-attachment: fixed;
-            text-align: center;
-            position: relative;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 100%);
-        }
-
-.cta .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Media Section */
-        .media {
-            padding: 120px 0;
-            background: var(--dark-secondary);
-        }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 20px;
-        }
-
-        .media-card {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-            cursor: pointer;
-            background: var(--dark);
-            border: 1px solid rgba(212, 168, 83, 0.2);
-            transition: all 0.4s ease;
-        }
-
-        .media-card:hover {
-            border-color: var(--gold);
-            transform: scale(1.02);
-        }
-
-        .media-card.media-main {
-            height: 400px;
-        }
-
-        .media-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        .play-button {
-            width: 80px;
-            height: 80px;
-            border: 3px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            background: rgba(10,10,10,0.5);
-        }
-
-        .media-card:hover .play-button {
-            background: var(--gold);
-            color: var(--dark);
-            transform: scale(1.1);
-        }
-
-        .media-card h3 {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .media-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(10,10,10,0.8) 100%),
-                        url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=60') center/cover;
-            z-index: 1;
-        }
-
-        .media-main .media-overlay {
-            background: linear-gradient(180deg, transparent 30%, rgba(10,10,10,0.9) 100%),
-                        url('https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=1200&q=60') center/cover;
-        }
-
-        /* Footer */
-        footer {
-            padding: 60px 0 30px;
-            background: var(--dark-secondary);
-            border-top: 1px solid rgba(212, 168, 83, 0.1);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--text-muted);
-            border-radius: 50%;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
+            width: 2px;
             height: 2px;
             background: var(--gold);
-            transition: all 0.3s ease;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: drift 20s infinite linear;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .about-grid, .factions-grid {
-                grid-template-columns: 1fr;
+        @keyframes drift {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
             }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .faction-card {
-                height: 400px;
-            }
-
-.hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .media-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .media-card.media-main {
-                height: 300px;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .cta h2 {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-links {
-                flex-direction: column;
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% {
+                transform: translateY(-10vh) translateX(50px);
+                opacity: 0;
             }
         }
 
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 18s; }
+        .particle:nth-child(2) { left: 25%; animation-delay: 3s; animation-duration: 22s; }
+        .particle:nth-child(3) { left: 40%; animation-delay: 1s; animation-duration: 20s; }
+        .particle:nth-child(4) { left: 55%; animation-delay: 5s; animation-duration: 19s; }
+        .particle:nth-child(5) { left: 70%; animation-delay: 2s; animation-duration: 21s; }
+        .particle:nth-child(6) { left: 85%; animation-delay: 4s; animation-duration: 23s; }
+        .particle:nth-child(7) { left: 15%; animation-delay: 6s; animation-duration: 17s; }
+        .particle:nth-child(8) { left: 60%; animation-delay: 7s; animation-duration: 24s; }
+
+        .countdown-number {
+            animation: fadeCount 0.5s ease;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeCount {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px) scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 1.5s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); filter: blur(0); }
+            100% { opacity: 0; transform: scale(1.1); filter: blur(10px); }
+        }
+
+        @media (max-width: 768px) {
+            .countdown-number {
+                font-size: 5rem;
+                min-width: 80px;
+            }
+            
+            .symbol {
+                font-size: 3rem;
+            }
+            
+            .message {
+                font-size: 0.9rem;
+                letter-spacing: 0.2em;
+            }
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
-        <div class="container">
-            <a href="#" class="logo">Dune: Arrakis Dominion</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">Historia</a></li>
-                <li><a href="#factions">Facciones</a></li>
-                <li><a href="#features">Características</a></li>
-                <li><a href="#media">Media</a></li>
-                <li><a href="#cta" class="btn btn-primary" style="padding: 10px 25px; font-size: 0.8rem;">Pre-compra</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero">
+    <div class="landing" id="landing">
+        <div class="sand-overlay"></div>
         <div class="particles">
             <div class="particle"></div>
             <div class="particle"></div>
@@ -907,252 +247,45 @@
             <div class="particle"></div>
             <div class="particle"></div>
             <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
         </div>
-        <div class="hero-content">
-            <h1>Dune: Arrakis Dominion</h1>
-            <p class="tagline">En el desierto, solo sobrevive el más astuto. Domina Arrakis y establece tu legado.</p>
-            <div class="hero-buttons">
-                <a href="#cta" class="btn btn-primary">Wishlist en Steam</a>
-                <a href="#about" class="btn btn-secondary">Ver más</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span></span>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Domina el Desierto</h2>
-                <p>Una experiencia estratégica sin precedentes en el icónico universo de Dune. Gestion recursos, construye tu base y lidera a tus tropas hacia la victoria.</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-card fade-in">
-                    <div class="icon">⚔️</div>
-                    <h3>Estrategia en Tiempo Real</h3>
-                    <p>Combate táctico con sistema de dirección de daños. Utiliza el terreno a tu favor y domina el campo de batalla.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <div class="icon">🏰</div>
-                    <h3>Construcción de Base</h3>
-                    <p>Construye y mejora tu base con edificios únicos. Gestiona recursos de Especia, Agua y Energía.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <div class="icon">👥</div>
-                    <h3>Facciones Únicas</h3>
-                    <p>Elige tu camino: House Atreides, House Harkonnen o la Casa de la Disputa. Cada facción tiene estrategias únicas.</p>
+        
+        <div class="content">
+            <div class="symbol">◇</div>
+            <p class="message">El desierto llama</p>
+            
+            <div class="countdown">
+                <div>
+                    <div class="countdown-number" id="countdown">10</div>
+                    <p class="countdown-label">attendez</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="factions" id="factions">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Elige Tu Destino</h2>
-                <p>Cada facción ofrece un estilo de juego único. ¿Serás un estratega defensivo, un conquistador brutal o un oportunista astuto?</p>
-            </div>
-            <div class="factions-grid">
-                <div class="faction-card faction-atreides fade-in">
-                    <div class="faction-bg"></div>
-                    <div class="faction-content">
-                        <h3>House Atreides</h3>
-                        <p class="leader">Liderado por Conde Hasimir Fenring</p>
-                        <p>Defensores del pueblo Fremen con tecnología avanzada. Perfectos para jugadores que buscan control estratégico y defensas sólidas.</p>
-                    </div>
-                </div>
-                <div class="faction-card faction-harkonnen fade-in">
-                    <div class="faction-bg"></div>
-                    <div class="faction-content">
-                        <h3>House Harkonnen</h3>
-                        <p class="leader">Liderado por Barón Vladimir Harkonnen</p>
-                        <p>Brutalidad y control económico con tecnología arcaica. Ideal para quienes prefieren ataques agresivos y dominio territorial.</p>
-                    </div>
-                </div>
-                <div class="faction-card faction-disputa fade-in">
-                    <div class="faction-bg"></div>
-                    <div class="faction-content">
-                        <h3>Casa de la Disputa</h3>
-                        <p class="leader">Liderada por Lady Jessica</p>
-                        <p>Opportunistas neutrales con capacidades únicas. Versátiles y adaptables, perfectos para estrategias flexibles.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Características del Juego</h2>
-                <p>Una combinación perfecta de clásicos RTS con elementos modernos de MOBA</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item fade-in">
-                    <span class="feature-number">01</span>
-                    <div class="feature-content">
-                        <h3>Gestión de Recursos</h3>
-                        <p>Domina la economía de Arrakis: controla la Especia, gestiona el agua y la energía. Cada decisión afecta tu camino hacia la victoria.</p>
-                    </div>
-                </div>
-                <div class="feature-item fade-in">
-                    <span class="feature-number">02</span>
-                    <div class="feature-content">
-                        <h3>Sistema de Combate Táctico</h3>
-                        <p>Sistema de dirección de daños con cobertura y terreno ventajoso. La táctica vence a la fuerza bruta.</p>
-                    </div>
-                </div>
-                <div class="feature-item fade-in">
-                    <span class="feature-number">03</span>
-                    <div class="feature-content">
-                        <h3>Héroes Únicos</h3>
-                        <p>Incarna a Paul Atreides, Feyd-Rautha o Stilgar, cada uno con habilidades únicas que cambian el curso de la batalla.</p>
-                    </div>
-                </div>
-                <div class="feature-item fade-in">
-                    <span class="feature-number">04</span>
-                    <div class="feature-content">
-                        <h3>Múltiples Modos de Juego</h3>
-                        <p>Campaña de 12 misiones, Skirmish contra IA escalable y multijugador local y online para hasta 4 jugadores.</p>
-                    </div>
-                </div>
-                <div class="feature-item fade-in">
-                    <span class="feature-number">05</span>
-                    <div class="feature-content">
-                        <h3>Entorno Dinámico</h3>
-                        <p>Tormentas de arena, gusanos salvajes y arena movediza. El desierto mismo es un enemigo formidable.</p>
-                    </div>
-                </div>
-                <div class="feature-item fade-in">
-                    <span class="feature-number">06</span>
-                    <div class="feature-content">
-                        <h3>Desarrollo Tecnológico</h3>
-                        <p>Tres líneas de investigación paralelas: militar, economía y especial. Evoluciona tu facción según tu estilo.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="media" id="media">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Immersión Visual</h2>
-                <p>Descubre el universo de Dune como nunca antes. Graphics de siguiente generación con detalles hyperrealistas.</p>
-            </div>
-            <div class="media-grid">
-                <div class="media-card media-main fade-in">
-                    <div class="media-content">
-                        <div class="play-button">▶</div>
-                        <h3>Trailer Cinemático</h3>
-                    </div>
-                    <div class="media-overlay"></div>
-                </div>
-                <div class="media-card fade-in">
-                    <div class="media-content">
-                        <div class="play-button">▶</div>
-                        <h3>Gameplay Trailer</h3>
-                    </div>
-                </div>
-                <div class="media-card fade-in">
-                    <div class="media-content">
-                        <div class="play-button">▶</div>
-                        <h3>Dev Diary #1</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta" id="cta">
-        <div class="container">
-            <h2>Únete a la Conquista</h2>
-            <p>Sé uno de los primeros en experimentar Dune: Arrakis Dominion. Wishlist ahora y recibe recompensas exclusivas.</p>
-            <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Wishlist en Steam</a>
-                <a href="#" class="btn btn-secondary">Registrarme para Beta</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Dune: Arrakis Dominion</div>
-                <ul class="footer-links">
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos de Uso</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Prensa</a></li>
-                </ul>
-                <div class="social-links">
-                    <a href="#" title="Twitter">X</a>
-                    <a href="#" title="YouTube">YT</a>
-                    <a href="#" title="Discord">DC</a>
-                    <a href="#" title="Reddit">RD</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Dune: Arrakis Dominion. Todos los derechos reservados. Basado en el universo de Frank Herbert.</p>
-            </div>
-        </div>
-    </footer>
+        
+        <a href="main.html" class="skip">Entrar ahora</a>
+    </div>
 
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
+        const countdownEl = document.getElementById('countdown');
+        const landing = document.getElementById('landing');
+        let count = 10;
+        
+        const countdown = setInterval(() => {
+            count--;
+            
+            if (count > 0) {
+                countdownEl.style.animation = 'none';
+                countdownEl.offsetHeight;
+                countdownEl.style.animation = 'fadeCount 0.5s ease';
+                countdownEl.textContent = count;
             } else {
-                navbar.classList.remove('scrolled');
+                clearInterval(countdown);
+                countdownEl.textContent = '0';
+                landing.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, 1500);
             }
-        });
-
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile menu
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Fade in animations on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        fadeElements.forEach(el => observer.observe(el));
+        }, 1000);
     </script>
 </body>
 </html>
